@@ -13,7 +13,6 @@ import (
 	"botgo/sdk/log"
 	"botgo/sdk/openapi"
 	"botgo/sdk/token"
-	"botgo/sdk/version"
 	"github.com/go-resty/resty/v2" // resty 是一个优秀的 rest api 客户端，可以极大的减少开发基于 rest 标准接口求请求的封装工作量
 )
 
@@ -78,7 +77,7 @@ func (o *openAPI) setupClient() {
 		SetTimeout(o.timeout).
 		SetAuthToken(o.token.GetString()).
 		SetAuthScheme(string(o.token.Type)).
-		SetHeader("User-Agent", version.String()).
+		SetHeader("User-Agent", "M").
 		SetPreRequestHook(
 			func(client *resty.Client, request *http.Request) error {
 				// 执行请求前过滤器
